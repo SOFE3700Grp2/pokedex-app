@@ -1,0 +1,8 @@
+{% extends 'core/index.html' %}
+{% block homepage %}
+<form action="{% url 'core:add' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Upload">
+</form>
+{% endblock homepage %}

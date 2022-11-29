@@ -1,0 +1,22 @@
+{% extends "core/index.html" %}
+{% block homepage %}
+{% if images %}
+{% for image in images %}
+<div class="col">
+    <div class="card shadow-sm">
+        <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ image.pic.url }}" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/></img>
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <form action="{% url 'core:delete' image.id %}">
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                    </form>
+                </div>
+                <small class="text-muted">{% for tag in image.tags.all %} #{{ tag }} {% endfor %}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock homepage %}
