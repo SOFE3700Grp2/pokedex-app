@@ -14,7 +14,6 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/")
 async def root():
-
     return {"message": "Welcome to PokeDex"}
 
 class PokemonO(BaseModel):
