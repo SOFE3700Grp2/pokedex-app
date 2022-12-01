@@ -9,12 +9,11 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="./static"), name="static")
+templates = Jinja2Templates(directory="./templates")
 
 @app.get("/")
 async def root():
-
     return {"message": "Welcome to PokeDex"}
 
 class PokemonO(BaseModel):
@@ -36,6 +35,13 @@ async def get_pokemon(pokemon_id: str, response: Response) -> PokemonO:
         response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     return result
 
+@app.get("/items/{id}", response_class=HTMLResponse)
+async def read_item(request: Request, id: str):
+    return templates.TemplateResponse("item.html", {"request": request, "id": id})
+
+@app.get("/{id}", response_class=HTMLResponse)
+async def read_item(request: Request, id: str):
+    return templates.TemplateResponse("./info.html", {"request": request, "id": id})    
 '''
 {
     "id":1,

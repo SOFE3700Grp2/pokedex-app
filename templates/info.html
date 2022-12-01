@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+   <head>
+      <title>Pokedex</title>
+      <link href="{{ url_for('static', path='/info.css') }}" rel="stylesheet">
+      <!-- <link rel="stylesheet" href="../static/info.css"> -->
+   </head>
+   <body>
+      <div>
+         <div>
+            <nav>
+               <div class="dropdown">
+                  <button onclick="document.location='../static/Pokemon.html'">Home</button>
+                  <button onclick="document.location='../static/choose.html'">Pokemon Search</button>
+                  <button onclick="document.location='../static/info.html'">Pokedex</button>
+               </div>
+            </nav>
+         </div>
+         <h1>
+            <div class="dex_img">
+               <img src="../assets/dex.jpg" alt="dex image">
+            </div>
+         </h1>
+         <h2>
+            <div class="dex_info">
+               <p>{{ pokemon }}</p>
+            </div>
+         </h2>
+         <h3>
+            <div class="dex_info2">
+               <p>Pokemon ID Number: {{ id }}</p>
+               <!-- <p>Type I: {{ type1 }}</p>
+               <p>Type II: {{ type2 }}</p> -->
+            </div>
+         </h3>
+      </div>
+   </body>
+</html>
